@@ -1,12 +1,11 @@
 - hosts: localhost
   become: yes
   tasks:
-
-    - name: update
-      apt: update_cache=yes   
-   
+ 
     - name: install apache2
-      apt: name=apache2 state=latest
+      yum: 
+        name: httpd
+        state: present
 
     - name: enabled mod_rewrite
       apache2_module: name=rewrite state=present
